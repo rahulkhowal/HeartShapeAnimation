@@ -1,6 +1,6 @@
 /**
  * Heart Animation App
- * React Native App with Heart Animation Component
+ * React Native App with 8 Hearts in Vertical Column
  *
  * @format
  */
@@ -30,21 +30,18 @@ function AppContent() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>Heart Animation</Text>
-        <Text style={styles.subtitle}>Tap the heart to see the animation!</Text>
+        <Text style={styles.title}>Demo</Text>
       </View>
       
-      <View style={styles.heartSection}>
-        <HeartAnimation 
-          size={80}
-          onPress={() => console.log('Heart pressed!')}
-        />
-      </View>
-      
-      <View style={styles.footer}>
-        <Text style={styles.footerText}>
-          Created with React Native
-        </Text>
+      <View style={styles.heartColumn}>
+        {[1, 2, 3, 4, 5, 6, 7, 8].map((index) => (
+          <View key={index} style={styles.heartWrapper}>
+            <HeartAnimation 
+              size={60}
+              onPress={() => console.log(`Heart ${index} pressed!`)}
+            />
+          </View>
+        ))}
       </View>
     </View>
   );
@@ -56,33 +53,24 @@ const styles = StyleSheet.create({
     backgroundColor: '#f8f9fa',
   },
   header: {
-    alignItems: 'center',
     paddingTop: 60,
-    paddingBottom: 40,
+    paddingLeft: 20,
   },
   title: {
-    fontSize: 28,
+    fontSize: 24,
     fontWeight: 'bold',
-    color: '#2c3e50',
-    marginBottom: 8,
+    color: '#007AFF',
   },
-  subtitle: {
-    fontSize: 16,
-    color: '#7f8c8d',
-    textAlign: 'center',
-  },
-  heartSection: {
+  heartColumn: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    paddingVertical: 20,
   },
-  footer: {
+  heartWrapper: {
+    marginVertical: 15,
     alignItems: 'center',
-    paddingBottom: 40,
-  },
-  footerText: {
-    fontSize: 14,
-    color: '#95a5a6',
+    justifyContent: 'center',
   },
 });
 
